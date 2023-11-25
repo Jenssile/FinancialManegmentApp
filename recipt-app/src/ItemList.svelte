@@ -9,5 +9,6 @@
     pre {
         font-family: 'Courier New', Courier, monospace;
         font-size: medium;
+        font-weight: bold;
     }
 </style>

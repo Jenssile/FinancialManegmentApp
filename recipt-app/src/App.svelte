@@ -15,6 +15,33 @@
         inputs[event.detail[2]].itemCost = event.detail[1]
         inputs = inputs
     }
+
+    const doPost = async () => {
+        const res = await fetch('http://localhost:3000/StoreData', {
+            method: 'POST',
+            body: JSON.stringify({
+                inputs
+            }),
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        
+        const json = await res.json()
+        console.log(JSON.stringify(json))
+    }
+
+    const newID = async () => {
+        const res = await fetch('http://localhost:3000/GetReciptID', {
+            method: 'GET',
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+        
+        const json = await res.json()
+        console.log(JSON.stringify(json))
+    }
 </script>
 
 <main>
@@ -22,6 +49,8 @@
         <div class="flexyitem">
             <button class="Blue" on:click={AddInput}>Add Item</button>
             <button class="Red" on:click={RmInput}>Remove Item</button>
+            <button class="Orange" on:click={doPost}>Send to server</button>
+            <button class="Orange" on:click={newID}>Get Recipt id</button>
             <br />
             {#each inputs as {itemID, itemName, itemCost}, iID (itemID)}
                 <Inputfield {itemName} {itemCost} {iID} on:update={update}/>
@@ -36,7 +65,6 @@
             {/key}
         </div>
     </div>
- 
 </main>
 
 <style>
@@ -46,6 +74,10 @@
     }
     .Red {
         background-color: #990033;
+        color: white;
+    }
+    .Orange {
+        background-color: #ed9015;
         color: white;
     }
     .container {
