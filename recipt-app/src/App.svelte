@@ -4,8 +4,8 @@
     import ItemList from "./ItemList.svelte"
     import Loginpage from "./Loginpage.svelte"
     let user = {
-        "username": "",
-        "password": "",
+        "username": "Jhon",
+        "password": "123",
         "loggedIn": false
     }
     let defaultID = 0
@@ -29,7 +29,6 @@
         inputs.forEach(element => {
             // btoa is made for backwards compatibilty but i am using it here as this is a demo application
             let newEntry = {"itemName": btoa(element.itemName), "itemCost": btoa(element.itemCost)}
-            
             data.push(newEntry)
         })
         console.log(data)
@@ -47,8 +46,6 @@
         const json = await res.json()
         console.log(JSON.stringify(json))
     }
-
-    
 </script>
 
 <main>
@@ -80,8 +77,6 @@
             reciptid = e.detail.reciptid
         }} {...user}/>
     {/if}
-
-
 </main>
 
 <style>

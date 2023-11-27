@@ -39,7 +39,7 @@
 <br>
 <input type="password" name="password" placeholder="Password" bind:value={password}>
 <br>
-<!--login should be the one who gets the ID but for now the user is hard coded -->
+<!-- login func should be the one who gets the ID but for now the user is hard coded -->
 <button on:click={login} disabled={waiting}>Login</button>
 
 <style>
