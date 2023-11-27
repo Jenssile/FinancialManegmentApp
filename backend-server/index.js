@@ -41,9 +41,3 @@ app.get('/GetReciptID', async function (req, res) {
 console.log("http://localhost:3000")
 
 app.listen(3000)
-
-// higly advanced function, that dose what it needs to do and no more
-// when i get db figured out i will make sure this is uniqe
-function GenerateReciptID() {
-  return 
-}
