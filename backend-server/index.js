@@ -21,7 +21,11 @@ app.get('/', function (req, res) {
   res.send("How to USE api: \n '/' : is how to use \n '/StoreData' : send data to here to store it \n '/NewReciptID' : get a new ID for a new recipt")
 })
 
-app.post('/StoreData', function (req, res) {
+app.post('/StoreData', async function (req, res) {
+  for (let index = 0; index < req.body.data.length; index++) {
+    const answer = await client.query('INSERT INTO test.recipts(reciptid, item, price) VALUES($1, $2, $3) RETURNING *', [req.body.reciptid, req.body.data[index].itemName, req.body.data[index].itemCost])
+    console.log(answer.rows[0])
+  }
   console.log(req.body)
   res.json({
     "status": 200
